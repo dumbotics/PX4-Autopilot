@@ -52,6 +52,7 @@
 #if CONFIG_MODE_NAVIGATOR_VTOL_TAKEOFF
 #include "vtol_takeoff.h"
 #endif //CONFIG_MODE_NAVIGATOR_VTOL_TAKEOFF
+#include "intercept.h"
 
 #include "navigation.h"
 
@@ -380,6 +381,7 @@ private:
 	AdsbConflict 	_adsb_conflict;			/**< class that handles ADSB conflict avoidance */
 	traffic_buffer_s _traffic_buffer{};
 #endif // CONFIG_NAVIGATOR_ADSB
+        Intercept _intercept;                           /**< class that handles intercepting a target */
 
 	NavigatorMode *_navigation_mode{nullptr};	/**< abstract pointer to current navigation mode class */
 	NavigatorMode *_navigation_mode_array[NAVIGATOR_MODE_ARRAY_SIZE] {};	/**< array of navigation modes */

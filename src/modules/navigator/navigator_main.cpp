@@ -80,7 +80,8 @@ Navigator::Navigator() :
 #endif //CONFIG_MODE_NAVIGATOR_VTOL_TAKEOFF
 	_land(this),
 	_precland(this),
-	_rtl(this)
+	_rtl(this),
+	_intercept(this)
 {
 	/* Create a list of our possible navigation types */
 	_navigation_mode_array[0] = &_mission;
@@ -837,6 +838,11 @@ void Navigator::run()
 			_pos_sp_triplet_published_invalid_once = false;
 			navigation_mode_new = &_precland;
 			_precland.set_mode(PrecLandMode::Required);
+			break;
+
+		case vehicle_status_s::NAVIGATION_STATE_AUTO_INTERCEPT:
+			_pos_sp_triplet_published_invalid_once = false;
+			navigation_mode_new = &_intercept;
 			break;
 
 		case vehicle_status_s::NAVIGATION_STATE_MANUAL:
