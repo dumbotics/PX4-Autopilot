@@ -1,0 +1,5 @@
+menuconfig SYSTEMCMDS_INTERCEPT
+	bool "intercept"
+	default n
+	---help---
+		Publish an InterceptSetpoint and switch to AUTO_INTERCEPT (dev/SITL helper).
